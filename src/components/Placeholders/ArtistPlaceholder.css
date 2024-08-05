@@ -1,0 +1,25 @@
+.svg-container {
+  background-color: rgb(105, 105, 105); /* Background color of the div */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.generic-artist-placeholder {
+  width: 200px; /* Width of the div */
+  height: 200px; /* Height of the div */
+  border-radius: 50%; /* Border radius of the div */
+  background-color: rgb(105, 105, 105); /* Background color of the div */
+}
+
+.svg-icon {
+  width: 70%;
+  height: 70%;
+}
+
+.svg-path {
+  fill: white; /* Fill color of the SVG */
+  stroke: white; /* Stroke color of the SVG */
+  stroke-width: 1.0; /* Stroke width of the SVG */
+}
+

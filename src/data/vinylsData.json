@@ -1,0 +1,14 @@
+{
+    "vinyls": [
+        {
+            "_id": "66a9499f1ff500bb652df269",
+            "title": "Abbey Road",
+            "artist": {
+                "_id": "66a9502d050363f3a0dcca76",
+                "name": "The Beatles"
+            },
+            "coverImage": "https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg",
+            "price": 29.99
+        }
+    ]
+}

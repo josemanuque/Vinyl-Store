@@ -1,0 +1,38 @@
+.vinyl-item {
+    border-radius: 1em;
+    padding: 1em;
+    /* flex: 1 1 200px; Allow items to grow and shrink, with a base width of 200px */
+    width: 260px; /* Set a base width for the items */
+  }
+
+  
+  
+.vinyl-item img {
+  border-radius: 0.5em;
+  width: 260px; /* Set a maximum width for the images */
+  height: 260px; /* Set a maximum height for the images */
+  
+}
+
+.vinyl-item h3 {
+  font-size: 1.2rem;
+  margin: 0.5em 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.default-cover {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* .vinyl-item .vinyl-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 260px;
+  width: 100%;
+} */

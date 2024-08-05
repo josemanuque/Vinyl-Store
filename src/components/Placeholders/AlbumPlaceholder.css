@@ -1,0 +1,30 @@
+.svg-container {
+    background-color: rgb(105, 105, 105); /* Background color of the div */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.svg-icon {
+    width: 70%;
+    height: 70%;
+}
+
+.svg-path {
+    fill: white; /* Fill color of the SVG */
+    stroke: white; /* Stroke color of the SVG */
+    stroke-width: 1.0; /* Stroke width of the SVG */
+}
+
+.album-grid-img {
+    width: 260px; /* Width of the div */
+    height: 260px; /* Height of the div */
+    border-radius: 0.5em;
+}
+
+.coverflow-img {
+    width: 100%; /* Width of the div */
+    height: 100%; /* Height of the div */
+    border-radius: 0.5em;
+}

@@ -1,0 +1,16 @@
+.vinyls-container {
+  display: flex;
+  justify-content: center; /* Center the grid container horizontally */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+  padding: 1rem; /* Optional: Add some padding */
+}
+
+.vinyl-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the column width */
+  gap: 1rem; /* Add space between vinyls */
+  justify-content: center; /* Center the grid items within the container */
+  max-width: 100%; /* Ensure it doesn't exceed container width */
+  /* Optional: Add a minimum width to prevent the grid from becoming too narrow */
+  min-width: 300px; /* Adjust as needed based on your layout */
+}
