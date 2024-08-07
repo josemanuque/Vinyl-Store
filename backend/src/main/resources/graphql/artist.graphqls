@@ -1,0 +1,24 @@
+type Artist{
+    id: ID!
+    name: String!
+    biography: String
+    imageURL: String
+    vinyls: [Vinyl]!
+}
+
+extend type Query {
+    findAllArtists: [Artist]!
+    findArtistById(id: ID!): Artist
+}
+
+extend type Mutation {
+    createArtist(artistInput: ArtistInput!): Artist!
+    updateArtist(id: ID!, artistInput: ArtistInput!): Artist!
+    deleteArtist(id: ID!): String
+}
+
+input ArtistInput {
+    name: String!
+    biography: String
+    imageURL: String
+}

@@ -1,0 +1,26 @@
+type Track{
+    id: ID!
+    title: String
+    album: Vinyl
+    artist: Artist
+    time: Int
+}
+
+extend type Query{
+    findAllTracks: [Track]!
+    findTrackById(id: ID!): Track!
+}
+
+extend type Mutation{
+    createTrack(trackInput: TrackInput!): Track!
+    updateTrack(id: ID!, trackInput: TrackInput!): Track!
+    deleteTrack(id: ID!): String
+
+}
+
+input TrackInput {
+    title: String
+    time: Int
+    albumId: ID!
+    artistId: ID!
+}
