@@ -1,5 +1,6 @@
 package com.project.vinylsapp.service;
 
+import com.project.vinylsapp.exception.ArtistNotFoundException;
 import com.project.vinylsapp.model.Artist;
 import com.project.vinylsapp.model.Vinyl;
 import com.project.vinylsapp.model.dto.ArtistInput;
@@ -23,7 +24,8 @@ public class ArtistService {
     }
 
     public Artist findArtistById(String id) {
-        return artistRepository.findById(id).orElse(null);
+        return artistRepository.findById(id)
+                .orElseThrow(()-> new ArtistNotFoundException(("Artist not found with id " + id)));
     }
 
     public Artist createArtist(ArtistInput artistInput) {
@@ -40,12 +42,18 @@ public class ArtistService {
 
                     return artistRepository.save(artist);
                 })
-                .orElseThrow(() -> new RuntimeException("Artist not found with id " + id));
+                .orElseThrow(() -> new ArtistNotFoundException("Artist not found with id " + id));
     }
     
 
     public String deleteArtist(String id) {
+
+        if (!artistRepository.existsById(id)) {
+            throw new ArtistNotFoundException("Artist not found with id " + id);
+        }
+
         artistRepository.deleteById(id);
+
         return "Deleted";
     }
 }
