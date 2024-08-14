@@ -1,0 +1,35 @@
+.setting-property {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--setting-text-color);
+}
+
+.setting-container {
+  background-color: var(--setting-background-color);
+  border-radius: 15px;
+  padding: 0.2rem 1rem;
+  margin: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.setting-container:hover {
+  background-color: var(--setting-background-color-hover);
+}
+
+.setting-property-option {
+    width: fit-content;
+}
+
+.setting-property h2{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--setting-text-color);
+}
+
+.icon-wrapper.icon-dark{
+    color: var(--setting-icon-color);
+}

@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react";
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
+import { BsCloudSun } from "react-icons/bs";
+import './Settings.View.css';
 
-const SettingsView = () => {
-    const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'default');
+const SettingsView: React.FC = () => {
+    const themeContext = useContext(ThemeContext);
 
-    
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }, [theme]);
+    if (!themeContext) {
+        throw new Error("SettingsView must be used within a ThemeProvider");
+    }
 
+    const { theme, setTheme } = themeContext;
 
     return (
-        <div>
+        <div className="main-container">
             <h1>Settings</h1>
-            <div>
-                <h2>Appearance</h2>
-                <select name="appearance" value={theme} onChange={(e) => setTheme(e.target.value)}>
+            <div className="setting-container">
+                <div className='setting-property'>
+                    <BsCloudSun className='icon-wrapper icon-dark'/>
+                    <h2>Appearance</h2>
+                </div>
+                <select aria-label='Choose your theme' className='setting-property-option' name="appearance" value={theme} onChange={(e) => setTheme(e.target.value)}>
                     <option value="default">System Default</option>
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>

@@ -1,31 +1,138 @@
 nav {
     background-color: var(--navbar-background-color);
     overflow: hidden;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-nav ul{
+.navbar-container {
     display: flex;
-    flex: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.navbar-logo a {
+    text-decoration: none;
+}
+
+.navbar-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--navbar-text-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-links {
+    display: flex;
+    flex-grow: 2;
+    justify-content: flex-end;
+}
+
+.navbar-links ul {
+    display: flex;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-nav ul li{
-    flex: 1;
+.navbar-links ul li {
+    margin-left: 20px;
 }
 
-nav ul li a{
-    display: block;
+.navbar-links ul li a {
     color: var(--navbar-text-color);
-    text-align: center;
-    padding: 20px 16px;
-    font-weight: bold;
     text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
+.navbar-links ul li a:hover {
+    background-color: var(--navbar-background-color-hover);
+    border-radius: 5px;
+}
 
-nav ul li a:hover {
-    background-color: var(--navbar-hover-background-color);
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--navbar-text-color);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Responsive Styles */
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-links {
+        position: fixed;
+        top: 60px; 
+        left: 0;
+        width: 100%;
+        background-color: var(--navbar-background-color);
+        flex-direction: column;
+        align-items: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        z-index: 999;
+    }
+
+    .navbar-links.open {
+        max-height: 300px; 
+    }
+
+    .navbar-links ul {
+        flex-direction: column;
+        margin: 1.5rem 0;
+        width: 100%;
+        display: flex;
+    }
+
+    .navbar-links ul li {
+        margin: 0.5rem 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-links ul li a {
+        width: 100%; /* Ensures the clickable area takes up the full width */
+        padding: 15px 0; /* Adjust the padding to increase the clickable area */
+        text-align: center;
+        display: block;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .navbar-logo {
+        flex-grow: 0;
+    }
+}
+
+
+.icon-color {
+    fill: var(--navbar-text-color);
 }

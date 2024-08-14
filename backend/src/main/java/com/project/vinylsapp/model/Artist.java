@@ -14,6 +14,8 @@ public class Artist {
     @UuidGenerator
     private String id;
     private String name;
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String biography;
     private String imageURL;
 

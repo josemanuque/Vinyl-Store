@@ -34,7 +34,7 @@ public class VinylService {
         Artist artist = artistService.findArtistById(vinylInput.artistId().describeConstable().orElseThrow(
                 () -> new IllegalArgumentException("Artist not found")
         ));
-        Vinyl vinyl = new Vinyl(vinylInput.title(), vinylInput.price(), vinylInput.coverImage(), artist);
+        Vinyl vinyl = new Vinyl(vinylInput.title(), vinylInput.price(), vinylInput.coverImage(), artist, vinylInput.releaseDate(), vinylInput.description());
         return vinylRepository.save(vinyl);
     }
 
@@ -42,23 +42,20 @@ public class VinylService {
     public Vinyl updateVinyl(String id, VinylInput vinylInput) {
         return vinylRepository.findById(id)
                 .map(vinyl -> {
-                    if (vinylInput.title() != null) {
-                        vinyl.setTitle(vinylInput.title());
-                    }
-                    if (vinylInput.price() != null) {
-                        vinyl.setPrice(vinylInput.price());
-                    }
-                    if (vinylInput.coverImage() != null) {
-                        vinyl.setCoverImage(vinylInput.coverImage());
-                    }
-                    if (vinylInput.artistId() != null && !vinyl.getArtist().getId().equals(vinylInput.artistId())) {
+                    vinyl.setTitle(vinylInput.title());
+                    vinyl.setPrice(vinylInput.price());
+                    vinyl.setCoverImage(vinylInput.coverImage());
+                    vinyl.setReleaseDate(vinylInput.releaseDate());
+                    vinyl.setDescription(vinylInput.description());
+
+                    if (!vinyl.getArtist().getId().equals(vinylInput.artistId())) {
                         vinyl.setArtist(artistService.findArtistById(vinylInput.artistId().describeConstable().orElseThrow(
                                 () -> new IllegalArgumentException("Artist not found")
                         )));
                     }
                     return vinylRepository.save(vinyl);
                 })
-                .orElseThrow(() -> new RuntimeException("Artist not found with id " + id));
+                .orElseThrow(() -> new RuntimeException("Vinyl not found with id " + id));
     }
 
     public String deleteVinyl(String id) {

@@ -42,4 +42,5 @@ public class ArtistController {
     public String deleteArtist(@Argument String id) {
         return artistService.deleteArtist(id);
     }
+
 }

@@ -1,9 +1,13 @@
 type Track{
     id: ID!
-    title: String
+    title: String!
     album: Vinyl
     artist: Artist
-    time: Int
+    time: Int!
+    spotifyTrackId: String
+    url: String
+    previewUrl: String
+    trackNumber: Int
 }
 
 extend type Query{
@@ -15,12 +19,25 @@ extend type Mutation{
     createTrack(trackInput: TrackInput!): Track!
     updateTrack(id: ID!, trackInput: TrackInput!): Track!
     deleteTrack(id: ID!): String
-
+    createTracks(trackInputList: [TrackInput]!): [Track]!
+    updateTracks(trackUpdates: [TrackUpdateInput]!): [Track]!
+    deleteTracks(trackIds: [ID]!): String
 }
 
 input TrackInput {
-    title: String
-    time: Int
-    albumId: ID!
-    artistId: ID!
+    id: ID
+    title: String!
+    time: Int!
+    albumId: ID
+    artistId: ID
+    spotifyTrackId: String
+    url: String
+    previewUrl: String
+    trackNumber: Int
+}
+
+
+input TrackUpdateInput {
+    id: ID!
+    trackInput: TrackInput!
 }

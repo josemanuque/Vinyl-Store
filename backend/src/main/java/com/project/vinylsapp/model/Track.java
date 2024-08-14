@@ -23,13 +23,22 @@ public class Track {
     @JsonBackReference
     private Artist artist;
 
+    private String spotifyTrackId;
+    private String url;
+    private String previewUrl;
+    private int trackNumber;
+
     public Track(){}
 
-    public Track(String title, int time, Vinyl album, Artist artist) {
+    public Track(String url, String title, Integer time, Vinyl album, Artist artist, String spotifyTrackId, String previewUrl, int trackNumber) {
+        this.url = url;
         this.title = title;
+        this.time = time;
         this.album = album;
         this.artist = artist;
-        this.time = time;
+        this.spotifyTrackId = spotifyTrackId;
+        this.previewUrl = previewUrl;
+        this.trackNumber = trackNumber;
     }
 
     public String getId() {
@@ -70,5 +79,41 @@ public class Track {
 
     public void setArtist(Artist artist) {
         this.artist = artist;
+    }
+
+    public int getTrackNumber() {
+        return trackNumber;
+    }
+
+    public void setTrackNumber(int trackNumber) {
+        this.trackNumber = trackNumber;
+    }
+
+    public String getPreviewUrl() {
+        return previewUrl;
+    }
+
+    public void setPreviewUrl(String previewUrl) {
+        this.previewUrl = previewUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getSpotifyTrackId() {
+        return spotifyTrackId;
+    }
+
+    public void setSpotifyTrackId(String spotifyTrackId) {
+        this.spotifyTrackId = spotifyTrackId;
+    }
+
+    public void setTime(Integer time) {
+        this.time = time;
     }
 }

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import React from "react";
 import "./SearchBar.css";
 
-const SearchBar = () => {
-    const [searchTerm, setSearchTerm] = useState("");
+interface SearchBarProps {
+    searchTerm: string;
+    setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
     
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
@@ -16,7 +20,6 @@ const SearchBar = () => {
                 value={searchTerm}
                 onChange={handleSearch}
             />
-            <button type="button">Search</button>
         </div>
     );
 };

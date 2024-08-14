@@ -1,0 +1,93 @@
+.album-details-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+    margin-top: 1rem;
+    min-width: 350px;
+}
+
+.album-info-container h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.album-info-container img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.album-description-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.album-info-container {
+    flex: 0.3;
+    /* padding: 1rem; */
+}
+
+.tracklist-container {
+    flex: 0.4;
+    min-width: 350px;
+}
+
+@media screen and (max-width:800px) {
+    .album-details-container{
+        display: block;
+    }
+
+    .album-info-container{
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+}
+
+
+
+
+.tracklist-container{
+    border-radius: 8px;
+    /* background-color: rgb(53, 51, 51); */
+}
+
+.tracklist-container .action-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+
+.tracklist-container ul {
+    list-style-type: none;
+    padding: 1rem;
+}
+
+.tracklist-container ul li a {
+    color: var(--tracklist-text-color);
+    text-decoration: none;
+}
+
+.tracklist-container ul li .track-item{
+    background-color: var(--tracklist-background-color);
+    padding: 0.2rem 1rem;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+dl {
+    display: grid;
+    width: max-content;
+    grid-template-columns: auto auto;
+}
+
+dd {
+    margin-left: 0.2rem;
+}

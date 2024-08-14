@@ -12,4 +12,4 @@ const useFormatCurrency = (locale: string, currency: string) => {
     }
 };
 
-export default useFormatCurrency
+export default useFormatCurrency;

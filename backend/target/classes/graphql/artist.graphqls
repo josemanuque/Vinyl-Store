@@ -3,7 +3,7 @@ type Artist{
     name: String!
     biography: String
     imageURL: String
-    vinyls: [Vinyl]!
+    vinyls: [Vinyl]
 }
 
 extend type Query {

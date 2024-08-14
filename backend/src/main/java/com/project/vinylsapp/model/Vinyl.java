@@ -29,13 +29,20 @@ public class Vinyl {
     @JsonManagedReference
     private List<Track> tracks;
 
+    private String releaseDate;
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
     public Vinyl(){}
 
-    public Vinyl(String title, Float price, String coverImage, Artist artist) {
+    public Vinyl(String title, Float price, String coverImage, Artist artist, String releaseDate, String description) {
         this.title = title;
         this.price = price;
         this.coverImage = coverImage;
         this.artist = artist;
+        this.releaseDate = releaseDate;
+        this.description = description;
     }
 
 
@@ -86,4 +93,21 @@ public class Vinyl {
     public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
     }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

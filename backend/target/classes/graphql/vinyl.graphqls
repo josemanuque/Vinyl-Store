@@ -5,6 +5,8 @@ type Vinyl{
     coverImage: String
     artist: Artist!
     tracks: [Track]!
+    releaseDate: String
+    description: String
 }
 
 extend type Query {
@@ -23,4 +25,6 @@ input VinylInput{
     coverImage: String
     price: Float!
     artistId: ID!
+    releaseDate: String
+    description: String
 }

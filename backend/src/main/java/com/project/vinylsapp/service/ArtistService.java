@@ -34,15 +34,10 @@ public class ArtistService {
     public Artist updateArtist(String id, ArtistInput artistInput) {
         return artistRepository.findById(id)
                 .map(artist -> {
-                    if (artistInput.name() != null) {
-                        artist.setName(artistInput.name());
-                    }
-                    if (artistInput.biography() != null) {
-                        artist.setBiography(artistInput.biography());
-                    }
-                    if (artistInput.imageURL() != null) {
-                        artist.setImageURL(artistInput.imageURL());
-                    }
+                    artist.setName(artistInput.name());
+                    artist.setBiography(artistInput.biography());
+                    artist.setImageURL(artistInput.imageURL());
+
                     return artistRepository.save(artist);
                 })
                 .orElseThrow(() -> new RuntimeException("Artist not found with id " + id));

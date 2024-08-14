@@ -14,3 +14,10 @@
   /* Optional: Add a minimum width to prevent the grid from becoming too narrow */
   min-width: 300px; /* Adjust as needed based on your layout */
 }
+
+.vinyl-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: contents; 
+}

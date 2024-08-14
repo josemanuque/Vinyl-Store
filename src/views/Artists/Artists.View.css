@@ -2,18 +2,26 @@ div .artists-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1.2rem;
-  padding: 1rem;
+  padding: 1rem 3rem;
+}
+
+@media  screen and (max-width: 500px) {
+  div .artists-list {
+    padding: 1rem;
+  }
+  
 }
 
 div .artists-list li {
   list-style: none;
   text-align: center;
   padding: 1rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 div .artists-list li:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--artist-list-background-color-hover);
   border-radius: 8px;
 }
 
@@ -21,4 +29,25 @@ div .artists-list li .artist-image-container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+div .artists-list li .artist-image-container img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.artists-view-container ul li a {
+  color: var(--artist-list-text-color);
+  text-decoration: none;
+}
+
+
+.view-top-container{
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
 }

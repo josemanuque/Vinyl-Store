@@ -1,0 +1,69 @@
+.artist-info-container {
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.artist-glance-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.artist-glance-container h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+
+.artist-glance-container img{
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.artist-options-container{
+    flex: 0.5;
+}
+
+.artist-options-container .artist-description-container{
+    display: flex;
+    align-items: center;
+    height: 80%;
+}
+
+.action-buttons-container{
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    gap: 1em;
+}
+
+.artist-details-container h2{
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+@media screen and (max-width:800px) {
+    .artist-info-container{
+        display: block;
+        min-width: 300px;
+    }
+
+    .artist-glance-container{
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .artist-details-container h2{
+        margin-left: 0;
+        text-align: center;
+    }
+    
+}

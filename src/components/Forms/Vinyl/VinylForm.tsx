@@ -58,6 +58,7 @@ const VinylForm = ({ onSubmit }: { onSubmit: (values: VinylInterface) => Promise
           id=""
           onChange={(e) => setArtist(e.target.value)}
           required
+          aria-label='Select an artist'
         >
           <option value="" disabled>Select an artist</option>
           {artists.map((artist) => (

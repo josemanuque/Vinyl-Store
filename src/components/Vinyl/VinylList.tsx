@@ -1,33 +1,38 @@
 import { FC } from "react";
-import {v4 as uuid} from 'uuid';
 import Vinyl from "./Vinyl";
 import './VinylList.css';
 import { VinylInterface } from "../../interfaces/Vinyl.Interface";
 
 interface VinylListProps {
-    vinyls: VinylInterface[];
+    vinyls?: VinylInterface[];
+    onDelete?: (id: string) => void;
+    onEdit?: (id: string) => void;
 }
 
-const VinylList: FC<VinylListProps> = ({vinyls}) => {
-
+const VinylList: FC<VinylListProps> = ({vinyls, onDelete, onEdit}) => {
     return (
         <div className="vinyls-container">
-            <div className='vinyl-list'>
-            {
-                vinyls.map(vinyl => {
-                    vinyl._id = uuid();
-                    return (
-                        <Vinyl
-                            key={vinyl._id}
-                            _id={vinyl._id}
-                            title={vinyl.title}
-                            coverImage={vinyl.coverImage}
-                            artist={vinyl.artist}
-                            price={vinyl.price}
-                        />
-                    )
-                })
-            }
+            <div className="vinyl-list">
+                <ul>
+                    <li>
+                    {
+                        vinyls?.map(vinyl => {
+                            return (
+                                <Vinyl
+                                    key={vinyl.id}
+                                    id={vinyl.id}
+                                    title={vinyl.title}
+                                    coverImage={vinyl.coverImage}
+                                    artist={vinyl.artist}
+                                    price={vinyl.price}
+                                    onDelete={onDelete}
+                                    onEdit={onEdit}
+                                />
+                            )
+                        })
+                    }
+                    </li>
+                </ul>
             </div>
         </div>
     );

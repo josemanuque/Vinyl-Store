@@ -1,0 +1,21 @@
+
+
+.trackItem{
+    background-color: var(--tracklist-background-color);
+    padding: 0.2rem 1rem;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    color: var(--tracklist-text-color);
+}
+
+.trackItem:hover{
+    background-color: var(--tracklist-background-color-hover);
+}
+
+.grabbableItem{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

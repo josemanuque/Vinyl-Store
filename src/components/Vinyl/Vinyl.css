@@ -1,3 +1,13 @@
+.vinyl-list ul li a {
+  text-decoration: none;
+  color: var(--vinyl-text-color);
+  transition: background-color 0.3s;
+}
+
+.vinyl-list ul li {
+  display: contents; /* Ensures li does not interfere with grid */
+}
+
 .vinyl-item {
     border-radius: 1em;
     padding: 1em;
@@ -5,7 +15,10 @@
     width: 260px; /* Set a base width for the items */
   }
 
-  
+.vinyl-list ul li a:hover {
+    background-color: var(--artist-list-background-color-hover);
+    border-radius: 8px;
+  }
   
 .vinyl-item img {
   border-radius: 0.5em;
@@ -14,7 +27,7 @@
   
 }
 
-.vinyl-item h3 {
+.vinyl-item h2 {
   font-size: 1.2rem;
   margin: 0.5em 0;
   white-space: nowrap;
@@ -27,6 +40,11 @@
   height: 100px;
   background-size: cover;
   background-position: center;
+}
+.vinyl-item .vi-buttons-container{
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5em;
 }
 
 /* .vinyl-item .vinyl-image-container {
