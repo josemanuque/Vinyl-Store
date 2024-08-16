@@ -1,6 +1,9 @@
 package com.project.vinylsapp.service;
 
 import com.project.vinylsapp.controller.ArtistController;
+import com.project.vinylsapp.exception.ArtistNotFoundException;
+import com.project.vinylsapp.exception.InvalidVinylInputException;
+import com.project.vinylsapp.exception.VinylNotFoundException;
 import com.project.vinylsapp.model.Artist;
 import com.project.vinylsapp.model.Vinyl;
 import com.project.vinylsapp.model.dto.VinylInput;
@@ -26,20 +29,20 @@ public class VinylService {
     }
 
     public Vinyl findById(String id) {
-        return vinylRepository.findById(id).orElse(null);
+        return vinylRepository.findById(id).orElseThrow(()-> new VinylNotFoundException("Vinyl not found with id " + id));
     }
 
     @Transactional
     public Vinyl createVinyl(VinylInput vinylInput){
-        Artist artist = artistService.findArtistById(vinylInput.artistId().describeConstable().orElseThrow(
-                () -> new IllegalArgumentException("Artist not found")
-        ));
+        validateVinylInput(vinylInput);
+        Artist artist = artistService.findArtistById(vinylInput.artistId());
         Vinyl vinyl = new Vinyl(vinylInput.title(), vinylInput.price(), vinylInput.coverImage(), artist, vinylInput.releaseDate(), vinylInput.description());
         return vinylRepository.save(vinyl);
     }
 
     @Transactional
     public Vinyl updateVinyl(String id, VinylInput vinylInput) {
+        validateVinylInput(vinylInput);
         return vinylRepository.findById(id)
                 .map(vinyl -> {
                     vinyl.setTitle(vinylInput.title());
@@ -49,18 +52,31 @@ public class VinylService {
                     vinyl.setDescription(vinylInput.description());
 
                     if (!vinyl.getArtist().getId().equals(vinylInput.artistId())) {
-                        vinyl.setArtist(artistService.findArtistById(vinylInput.artistId().describeConstable().orElseThrow(
-                                () -> new IllegalArgumentException("Artist not found")
-                        )));
+                        vinyl.setArtist(artistService.findArtistById(vinylInput.artistId()));
                     }
                     return vinylRepository.save(vinyl);
                 })
-                .orElseThrow(() -> new RuntimeException("Vinyl not found with id " + id));
+                .orElseThrow(() -> new VinylNotFoundException("Vinyl not found with id " + id));
     }
 
     public String deleteVinyl(String id) {
+        if (!vinylRepository.existsById(id)) {
+            throw new VinylNotFoundException("Vinyl not found with id " + id);
+        }
+
         vinylRepository.deleteById(id);
         return "Deleted";
     }
 
+    private void validateVinylInput(VinylInput vinylInput) {
+        if (vinylInput.title() == null || vinylInput.title().trim().isEmpty()) {
+            throw new InvalidVinylInputException("Vinyl title cannot be null or empty");
+        }
+        if (vinylInput.price() <= 0) {
+            throw new InvalidVinylInputException("Vinyl price must be a positive number");
+        }
+        if (vinylInput.artistId() == null || vinylInput.artistId().trim().isEmpty()) {
+            throw new InvalidVinylInputException("Artist ID cannot be null or empty");
+        }
+    }
 }

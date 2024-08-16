@@ -1,6 +1,7 @@
 package com.project.vinylsapp.service;
 
 import com.project.vinylsapp.exception.ArtistNotFoundException;
+import com.project.vinylsapp.exception.InvalidArtistInputException;
 import com.project.vinylsapp.model.Artist;
 import com.project.vinylsapp.model.Vinyl;
 import com.project.vinylsapp.model.dto.ArtistInput;
@@ -29,11 +30,13 @@ public class ArtistService {
     }
 
     public Artist createArtist(ArtistInput artistInput) {
+        validateArtistInput(artistInput);
         Artist artist = new Artist(artistInput.name(), artistInput.biography(), artistInput.imageURL());
         return artistRepository.save(artist);
     }
 
     public Artist updateArtist(String id, ArtistInput artistInput) {
+        validateArtistInput(artistInput);
         return artistRepository.findById(id)
                 .map(artist -> {
                     artist.setName(artistInput.name());
@@ -55,5 +58,11 @@ public class ArtistService {
         artistRepository.deleteById(id);
 
         return "Deleted";
+    }
+
+    private void validateArtistInput(ArtistInput artistInput) {
+        if (artistInput.name() == null || artistInput.name().trim().isEmpty()) {
+            throw new InvalidArtistInputException("Artist name cannot be null or empty");
+        }
     }
 }

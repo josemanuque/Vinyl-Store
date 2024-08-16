@@ -18,8 +18,14 @@ public class ArtistExceptionResolver extends DataFetcherExceptionResolverAdapter
                     .path(env.getExecutionStepInfo().getPath())
                     .location(env.getField().getSourceLocation())
                     .build();
-        } else {
-            return null;
+        } else if (ex instanceof InvalidArtistInputException) {
+            return GraphqlErrorBuilder.newError()
+                    .errorType(ErrorType.BAD_REQUEST)
+                    .message(ex.getMessage())
+                    .path(env.getExecutionStepInfo().getPath())
+                    .location(env.getField().getSourceLocation())
+                    .build();
         }
+        return null;
     }
 }
