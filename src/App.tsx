@@ -13,7 +13,6 @@ import EditVinylView from './views/EditVinyl/EditVinyl.View';
 
 
 const App = () => {
-
   return (
     <Router>
       <Navbar/>

@@ -4,8 +4,8 @@ import { SpotifyAlbumInterface, SpotifyAlbumSearchResult } from "../interfaces/S
 class SpotifyService {
   private token: string = '';
   private tokenExpirationTime: number = 0; // Store the token expiration time
-  private clientId: string = "c51ed655fead4060951511922a9e60a8";
-  private clientSecret: string = "4ff8739e190f4db7a2465f1bc150d74e";
+  private clientId: string = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string;
+  private clientSecret: string = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET as string;
   private idAndSecret: string = btoa(this.clientId + ':' + this.clientSecret);
   private tokenUrl: string = 'https://accounts.spotify.com/api/token'; // Replace with your actual token URL
 

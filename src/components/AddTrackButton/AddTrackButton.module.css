@@ -1,8 +1,8 @@
 
 
-.trackItem{
+.trackItemContainer{
     background-color: var(--tracklist-background-color);
-    padding: 0.2rem 1rem;
+    padding: 1rem 1rem;
     margin: 0.5rem 0;
     display: flex;
     justify-content: space-between;
